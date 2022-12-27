@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default async function customerFetch(req, res) {
   const data  = req.body;
-  
+  const customerId = data.customer.id
   const config = {
     headers: {
       'Accept': 'application/json',
@@ -14,7 +14,7 @@ export default async function customerFetch(req, res) {
   }
 
   try {
-    const response =  await axios.put('https://the-elegant-fashion-boutique.myshopify.com/admin/api/2022-10/products.json',data,config)
+    const response =  await axios.put(`https://the-elegant-fashion-boutique.myshopify.com/admin/api/2022-04/customers${customerId}.json`,data,config)
     if(response.status === 200){
       res.json(response.data)
     }
